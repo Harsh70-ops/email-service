@@ -7,7 +7,7 @@ import (
 )
 
 func SendEmails(to, from, subject, body string) error {
-
+	
 	//setting up authentication
 	auth := smtp.PlainAuth("", config.SMTPUser, config.SMTPPass, config.SMTPHost)
 
