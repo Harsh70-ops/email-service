@@ -11,7 +11,6 @@ type EmailRequest struct {
 	To      string `json:"to" binding:"required"`
 	From    string `json:"from" binding:"required"`
 	Subject string `json:"subject" binding:"required"`
-	Body    string `json:"body" binding:"required"`
 }
 
 func SendEmail(c *gin.Context) {
@@ -23,7 +22,7 @@ func SendEmail(c *gin.Context) {
 
 	//calling the smtp for sending email
 
-	if err := services.SendEmails(req.To, req.From, req.Subject, req.Body); err != nil {
+	if err := services.SendEmails(req.To, req.From, req.Subject); err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error})
 		return
 	}
